@@ -278,7 +278,6 @@ INSERT INTO `creature_movement` (`id`, `point`, `position_x`, `position_y`, `pos
 (7777139, 1, -9112.74, 329.042, 93.1768, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.46477, 0, 0),
 (7777140, 1, -9111.28, 330.854, 93.2441, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.46477, 0, 0);
 INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
-(777003, 600),
 (7777002, 600),
 (7777003, 600),
 (7777004, 600),
@@ -419,8 +418,7 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (7777139, 600),
 (7777140, 600),
 (7777141, 600),
-(777003, 600),
-(777001, 600),
+(7777001, 600),
 (7777142, 600);
 INSERT INTO `game_event_gameobject` (`guid`, `event`) VALUES
 (7777000, 600),

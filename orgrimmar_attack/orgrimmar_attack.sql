@@ -1,7 +1,7 @@
 DELETE FROM creature_template WHERE entry IN (900050, 900051, 900052);
 DELETE FROM quest_template WHERE entry IN (777100, 777101);
-DELETE FROM creature_questrelation WHERE entry IN (777100, 777101);
-DELETE FROM creature_involvedrelation WHERE entry IN (777100, 777101);
+DELETE FROM creature_questrelation WHERE quest IN (777100, 777101);
+DELETE FROM creature_involvedrelation WHERE quest IN (777100, 777101);
 DELETE FROM gameobject WHERE guid BETWEEN 7778128 AND 7778310;
 DELETE FROM creature WHERE guid BETWEEN 7778796 AND 7778938;
 DELETE FROM game_event_gameobject WHERE guid BETWEEN 7778128 AND 7778310;
@@ -10,12 +10,14 @@ DELETE FROM game_event where entry=601;
 DELETE FROM creature_template WHERE entry IN (900050, 900051, 9000520);
 DELETE FROM quest_template WHERE entry IN (777100, 777101);
 DELETE FROM game_event_quest WHERE quest  IN (777100, 777101);
-DELETE FROM game_event_quest  WHERE entry IN (777100, 777101);
+DELETE FROM game_event_quest  WHERE quest IN (777100, 777101);
 INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (14720, 777100);
 INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (900052, 777101);
 INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (14720, 777100);
 INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (900052, 777101);
 UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry` IN (900052, 14720);
+INSERT INTO `game_event` (`entry`, `start_time`, `end_time`, `occurence`, `length`, `holiday`, `description`) VALUES
+(601, '2010-04-20 16:00:00', '2020-12-31 18:00:00', 10080, 60, 0, 'Orgrimmar City Under Attack');
 INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `DeathState`, `MovementType`) VALUES
 (7778000, 900050, 1, 1, 1, 0, 653, 1946.09, -4148.63, 40.8881, 3.05186, 300, 0, 0, 35000, 0, 0, 0),
 (7778001, 900050, 1, 1, 1, 0, 653, 1933.87, -4139.75, 40.4032, 4.58552, 300, 0, 0, 35000, 0, 0, 0),
