@@ -801,3 +801,9 @@ INSERT INTO `quest_template` (`entry`, `Method`, `ZoneOrSort`, `MinLevel`, `Ques
 INSERT INTO game_event_quest VALUES (777100, 601), (777101, 601);
 INSERT INTO `locales_quest` (`entry`,`Title_loc8`,`Details_loc8`,`Objectives_loc8`,`OfferRewardText_loc8`,`RequestItemsText_loc8`) VALUES ('777100','','','Убей 20 Aliance Soldiest, после возвращайся к Верховному правителю Саурфангу.','Спасибо за помощь! Ты истинный герой! Жители Оргриммара будут помнить тебя.$B$BВозми это небольшое вознаграждение в знак нашего почтения.','Не расслабляйся $N! Армия Альянсв велика, нужно защищать город любой ценой!');
 INSERT INTO `locales_quest` (`entry`,`Title_loc8`,`Details_loc8`,`Objectives_loc8`,`OfferRewardText_loc8`,`RequestItemsText_loc8`) VALUES ('777101','','Настало наше время. Атака Оргриммара началась! $N ты просто должен(а) нам помочь! Наша армия сильна, но и охрана у Оргриммара не слабая, поэтому ты просто должен(а) принять участие в осаде. Вперед! Убей как можно больше охранников Оргриммара!','Убей 20 Оргриммарских стражников, после возвращайся к Болвару возле Штормграда.','Спасибо за помощь! Ты отличный боец. $B$BВозми это небольшое вознаграждение в знак моего почтения.','Не расслабляйся $N! Оргриммар еще не пал, его горнизон силен! Вперед!');
+
+/* фикс на хп и ману мобов, от YTDB */
+UPDATE `creature`, `creature_template` SET `creature`.`curhealth`=`creature_template`.`minhealth`,`creature`.`curmana`=`creature_template`.`minmana` WHERE `creature`.`id`=`creature_template`.`entry` and `creature_template`.`RegenHealth` = '1';
+UPDATE `creature` SET `MovementType` = 0 WHERE `spawndist` = 0 AND `MovementType`=1;
+UPDATE `creature` SET `spawndist`=0 WHERE `MovementType`=0;
+UPDATE `creature` SET `spawntimesecs` = 300 WHERE `spawntimesecs` = 25;

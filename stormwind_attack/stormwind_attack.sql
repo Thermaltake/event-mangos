@@ -532,3 +532,8 @@ INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (777003, 777000), (7
 INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (777003, 777000), (777001, 777001);
 INSERT INTO game_event_quest VALUES (777001, 600), (777000, 600);
 UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry` IN (777001, 777003);
+/* фикс на хп и ману мобов, от YTDB */
+UPDATE `creature`, `creature_template` SET `creature`.`curhealth`=`creature_template`.`minhealth`,`creature`.`curmana`=`creature_template`.`minmana` WHERE `creature`.`id`=`creature_template`.`entry` and `creature_template`.`RegenHealth` = '1';
+UPDATE `creature` SET `MovementType` = 0 WHERE `spawndist` = 0 AND `MovementType`=1;
+UPDATE `creature` SET `spawndist`=0 WHERE `MovementType`=0;
+UPDATE `creature` SET `spawntimesecs` = 300 WHERE `spawntimesecs` = 25;
