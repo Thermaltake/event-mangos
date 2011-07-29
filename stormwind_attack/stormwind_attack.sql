@@ -3,6 +3,12 @@ DELETE FROM creature_questrelation WHERE id=777003 AND quest=777000;
 DELETE FROM creature_involvedrelation WHERE id=777003 AND quest=777000;
 DELETE FROM game_event WHERE entry=600;
 DELETE FROM quest_template WHERE entry IN (777000, 777001);
+DELETE FROM locales_quest WHERE entry IN (777000, 777001);
+DELETE FROM game_event_creature WHERE guid BETWEEN 7777000 AND 7777142;
+DELETE FROM game_event_gameobject WHERE guid BETWEEN 7777000 AND 7777103;
+DELETE FROM creature WHERE guid BETWEEN 7777000 AND 7777142;
+DELETE FROM gameobject WHERE guid BETWEEN 7777000 AND 7777103;
+
 INSERT INTO `game_event` (`entry`, `start_time`, `end_time`, `occurence`, `length`, `holiday`, `description`) VALUES
 (600, '2010-04-20 16:00:00', '2020-12-31 18:00:00', 10080, 60, 0, 'Stormwind City Under Attack');
 INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid_1`, `modelid_2`, `modelid_3`, `modelid_4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `PowerType`, `minmana`, `maxmana`, `armor`, `faction_A`, `faction_H`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `rank`, `mindmg`, `maxdmg`, `dmgschool`, `attackpower`, `dmg_multiplier`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `minrangedmg`, `maxrangedmg`, `rangedattackpower`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `spell1`, `spell2`, `spell3`, `spell4`, `spell5`, `spell6`, `spell7`, `spell8`, `PetSpellDataId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType`, `unk16`, `unk17`, `RacialLeader`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `movementId`, `RegenHealth`, `vehicle_id`, `equipment_id`, `trainer_id`, `vendor_id`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`) VALUES
@@ -412,6 +418,8 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (7777139, 600),
 (7777140, 600),
 (7777141, 600),
+(777003, 600),
+(777001, 600),
 (7777142, 600);
 INSERT INTO `game_event_gameobject` (`guid`, `event`) VALUES
 (7777000, 600),
@@ -521,12 +529,11 @@ INSERT INTO `game_event_gameobject` (`guid`, `event`) VALUES
 INSERT INTO `locales_quest` (`entry`,`Title_loc8`,`Details_loc8`,`Objectives_loc8`,`OfferRewardText_loc8`,`RequestItemsText_loc8`) VALUES ('777000','','Скорее! Некогда медлить! $N ты должен(а) нам помочь! Тралл собрал сильную армию и атаковал Штормград, его нужно защитить. Ты должен(а) помочь нам в защитие, убей этих проклятых орков.','Убей 20 Orgrimmar Grunt, после возвращайся к Генералу Маркус Джонатану.','Спасибо за помощь! Ты истинный герой! Жители Штормграда будут помнить тебя.$B$BВозми это небольшое вознаграждение в знак нашего почтения','Не расслабляйся $N! Армия Орды велика, нужно защищать город любой ценой!');
 INSERT INTO `locales_quest` (`entry`, `Title_loc1`, `Title_loc2`, `Title_loc3`, `Title_loc4`, `Title_loc5`, `Title_loc6`, `Title_loc7`, `Title_loc8`, `Details_loc1`, `Details_loc2`, `Details_loc3`, `Details_loc4`, `Details_loc5`, `Details_loc6`, `Details_loc7`, `Details_loc8`, `Objectives_loc1`, `Objectives_loc2`, `Objectives_loc3`, `Objectives_loc4`, `Objectives_loc5`, `Objectives_loc6`, `Objectives_loc7`, `Objectives_loc8`, `OfferRewardText_loc1`, `OfferRewardText_loc2`, `OfferRewardText_loc3`, `OfferRewardText_loc4`, `OfferRewardText_loc5`, `OfferRewardText_loc6`, `OfferRewardText_loc7`, `OfferRewardText_loc8`, `RequestItemsText_loc1`, `RequestItemsText_loc2`, `RequestItemsText_loc3`, `RequestItemsText_loc4`, `RequestItemsText_loc5`, `RequestItemsText_loc6`, `RequestItemsText_loc7`, `RequestItemsText_loc8`, `EndText_loc1`, `EndText_loc2`, `EndText_loc3`, `EndText_loc4`, `EndText_loc5`, `EndText_loc6`, `EndText_loc7`, `EndText_loc8`, `CompletedText_loc1`, `CompletedText_loc2`, `CompletedText_loc3`, `CompletedText_loc4`, `CompletedText_loc5`, `CompletedText_loc6`, `CompletedText_loc7`, `CompletedText_loc8`, `ObjectiveText1_loc1`, `ObjectiveText1_loc2`, `ObjectiveText1_loc3`, `ObjectiveText1_loc4`, `ObjectiveText1_loc5`, `ObjectiveText1_loc6`, `ObjectiveText1_loc7`, `ObjectiveText1_loc8`, `ObjectiveText2_loc1`, `ObjectiveText2_loc2`, `ObjectiveText2_loc3`, `ObjectiveText2_loc4`, `ObjectiveText2_loc5`, `ObjectiveText2_loc6`, `ObjectiveText2_loc7`, `ObjectiveText2_loc8`, `ObjectiveText3_loc1`, `ObjectiveText3_loc2`, `ObjectiveText3_loc3`, `ObjectiveText3_loc4`, `ObjectiveText3_loc5`, `ObjectiveText3_loc6`, `ObjectiveText3_loc7`, `ObjectiveText3_loc8`, `ObjectiveText4_loc1`, `ObjectiveText4_loc2`, `ObjectiveText4_loc3`, `ObjectiveText4_loc4`, `ObjectiveText4_loc5`, `ObjectiveText4_loc6`, `ObjectiveText4_loc7`, `ObjectiveText4_loc8`) VALUES
 (777001, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Настало наше время. Атака Штомграда началась! $N ты просто должен(а) нам помочь! Наша армия сильна, но и охрана у Шторграда не слабая, поэтому ты просто должен(а) принять участие в осаде. Вперед! Убей как можно больше охранников Штормграда!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Убей 20 Штормградских стражников, после возвращайся к Траллу возле Штормграда.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Спасибо за помощь! Ты отличный боец. Локтар огар!$B$BВозми это небольшое вознаграждение в знак моего почтения.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Не расслабляйся $N! Штормград еще не пал, его горнизон силен! Вперед!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (777003, 777000);
-INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (777003, 777000);
-INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (777001, 777001);
-INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (777001, 777001);
-INSERT INTO game_event_creature VALUES (777003, 600);
-INSERT INTO game_event_creature VALUES (777001, 600);
-INSERT INTO game_event_quest VALUES (777001, 600);
-INSERT INTO game_event_quest VALUES (777000, 600);
+DELETE FROM creature_questrelation WHERE questIN (777000, 777001);
+DELETE FROM creature_involvedrelation WHERE questIN (777000, 777001);
+DELETE FROM 
+
+INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (777003, 777000), (777001, 777001);
+INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (777003, 777000), (777001, 777001);
+INSERT INTO game_event_quest VALUES (777001, 600), (777000, 600);
 UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry` IN (777001, 777003);
