@@ -533,7 +533,7 @@ INSERT INTO `locales_creature` (`entry`,`name_loc8`,`subname_loc8`) VALUES
 ('777000','Нападающий Оргриммарский стражник','Элитный Легион'),
 ('777001','Троль','Элитный Легион'),
 ('777002','Элитный Нападающий','Элитный Легион');
-INSERT INTO `locales_creature` (`entry`,`name_loc8`) VALUES ('777003','Элитная стража Штормграда')
+INSERT INTO `locales_creature` (`entry`,`name_loc8`) VALUES ('777003','Элитная стража Штормграда');
 INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES (777003, 777000), (777001, 777001);
 INSERT INTO `creature_involvedrelation` (`id`, `quest`) VALUES (777003, 777000), (777001, 777001);
 INSERT INTO game_event_quest VALUES (777001, 600), (777000, 600);
